@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace用于与DAO层的接口进行绑定，这样子我们无需实现DAO接口的方法
+其接口类就能够自动找到相关的sql语句进行绑定
+-->
+<mapper namespace="com.cloudsoft.dao.IUserDao">
+    <!--SELECT表示查询，它的id名称必须与DAO层接口的方法名称相同，否者无法绑定-->
+
+    <!--通过名字来查找用户-->
+    <select id="selectByName" parameterType="string" resultType="User">
+        SELECT * FROM user WHERE username=#{username}
+    </select>
+
+    <!--通过id来查找用户-->
+    <select id="selectById" parameterType="int" resultType="User">
+        SELECT * FROM user WHERE id=#{id}
+    </select>
+
+    <!--<insert id="addUser" parameterType="string">-->
+    <!--INSERT INTO tb_user(username,password) VALUES (#{username},#{password})-->
+    <!--</insert>-->
+
+    <!--增加用户-->
+    <insert id="addUser" parameterType="string">
+        INSERT INTO user(username,password,email) VALUES (#{username},#{password},#{email})
+    </insert>
+
+    <!--增加用户-->
+    <insert id="addUsers" parameterType="string">
+        INSERT INTO user(username,password,email,pic) VALUES (#{username},#{password},#{email},#{pic})
+    </insert>
+
+    <!--通过名字和密码检测是否登录成功-->
+    <select id="selectByNameandPass" parameterType="string" resultType="User">
+        SELECT * FROM user WHERE username=#{username} and password=#{password}
+    </select>
+
+    <!--找回密码-->
+    <select id="findPassword" parameterType="string" resultType="User">
+        SELECT * FROM user WHERE email=#{email}
+    </select>
+
+    <!--检查邮箱是否被注册-->
+    <select id="checkmail" parameterType="string" resultType="User">
+        SELECT * FROM user WHERE email=#{email}
+    </select>
+
+    <!--修改密码-->
+    <update id="alter" parameterType="string">
+        UPDATE user set password=#{password} WHERE username=#{username}
+    </update>
+</mapper>

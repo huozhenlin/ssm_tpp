@@ -1,0 +1,51 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*顶部导航栏*/
+#nav_top{
+    width: 100%;
+    height: 70px;
+    background: deepskyblue;
+}
+
+/*包含头像的div*/
+#nav_top_right{
+    float: right;
+    width: 100px;
+    height: 70px;
+}
+
+/*主页头像*/
+#user_image{
+    margin: 10px auto;
+    margin-left: 25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+/*点击头像出项悬浮窗*/
+#about{
+    position: relative;
+    float: right;
+    width: 200px;
+    background-color: #099be7;
+}
+#about ul li{
+    text-align: center;
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#about ul li:hover{
+    cursor: pointer;
+    background-color: darkred;
+}
+.exit{
+    border-color: darkred;
+    margin-top:115px ;
+    background-color: darkred;
+    width: 100%;
+    height: 50px;
+}

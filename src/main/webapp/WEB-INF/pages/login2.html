@@ -1,0 +1,167 @@
+﻿﻿﻿
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="../framework/CSS/index.css" type="text/css" rel="stylesheet" >
+    <title>用户登录</title>
+
+</head>
+<body>
+<div id="sky"></div>
+<div id="head"></div>
+
+<div>
+    <!--<div><p>登录</p><p>注册</p></div>-->
+    <!--这里是登录的表单-->
+    <div id="middle" style="display: block">
+        <form action="/admin/login" method="post">
+            <ul style="text-align: center;">
+                <li style="font-size: 48px"><img id="user_image" class="denglu_pic" src="/img/1440221163863.jpeg" style="height: 100px;width: 100px;border-radius:60px"></li>
+
+                <li><input class="name login_name" name="username" placeholder="请输入用户名"></li>
+                <li><input type="password" name="password" class="pwd" placeholder="请输入密码"></li>
+                <li id="verifyCode" style="display: block;"><input id="valid" name="code" placeholder="请输入验证码"
+                                                                   maxlength="4">
+                    <span id="validcode">
+                        <img id="verifyCodePic" id="img_captcha" src="/code">
+                    </span>
+                    <span id="changeimg">
+                            换一张
+                    </span>
+                </li>
+                <li>
+                    <button id="login">立即登录</button>
+                </li>
+                <span><a id="register">没有账号？</a><a id="forget">忘记密码</a></span>
+                <li>
+                    <span id="err" style="display: inline-block;"></span>
+                </li>
+
+
+            </ul>
+        </form>
+    </div>
+
+
+    <!--注册表单-->
+    <center id="div_register" style="background:#329BE0;display:none;z-index: 100;box-shadow: 0 0 0 999px rgba(0,0,0, 0.8);">
+        <button id="close" style="position: absolute;left: 0px">关闭</button>
+        <form id="re_form" action="/admin/addUser" method="post" enctype="multipart/form-data">
+            <table width="400px" height="280px" cellpadding="0" cellspacing="0" border="1" style="margin-top:20px;">
+                <tr>
+                    <td align="center" colspan="3">欢迎来到注册页面</td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>用户名：</label>
+                    </td>
+                    <td align="left">
+                        <input type="text" id="txtUserName" name="username" style="width:160px; margin-left:10px;"/>
+                    </td>
+                    <td><span class="name_tip"></span></td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>密 码：</label>
+                    </td>
+                    <td align="left">
+                        <input type="password" id="password" name="password" style="width:160px; margin-left:10px;"/>
+                    </td>
+                    <td><span class="pass_tip"></span></td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>确 认 密 码：</label>
+                    </td>
+                    <td align="left">
+                        <input type="password" id="com_pass" name="com_pass" style="width:160px; margin-left:10px;"/>
+                    </td>
+                    <td><span class="pass_tip"></span></td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>邮箱：</label>
+                    </td>
+                    <td align="left">
+                        <input type="text" id="email" name="email" style="width:160px; margin-left:10px;"/>
+                    </td>
+                    <td><span id="email_tip"></span></td>
+                </tr>
+
+                <tr>
+                    <td align="right">
+                        <label>头像：</label>
+                    </td>
+                    <td align="left">
+                        <input type="file" id="pic" name="file" style="width:160px; margin-left:10px;"/>
+                    </td>
+                    <td><span id="pic_head"></span></td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>验证码：</label>
+                    </td>
+                    <td align="left"><input id="index_code" name="code" type="text" style="width:160px;margin-left: 10px"/></td>
+                    <td> <img id="imgObj" alt="验证码" src="/code" />
+                        <a href="#" onclick="changeImg()">换一张</a></td></tr>
+                <tr>
+                <tr>
+                    <td align="center" colspan="3">
+                        <!--注册按钮-->
+                        <button style="text-align:center;height:30px;
+                width: 150px;background: darkred" type="button"
+                                id="subLogin" name="subLogin">注册</button>
+
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+    </center>
+
+    <!--找回密码-->
+    <div id="findPass" style="z-index:5;display: none;width: 300px;height: 200px; background: white;border-radius: 4px;box-shadow: 10px 10px 5px #030303">
+        <button id="exit" style="border-radius: 4px">关闭</button>
+        <h1 style="text-align: center;color: black">新蛋科技--密码找回</h1>
+        <input id="input_mail" style="margin-top: 50px;margin-left: 50px;" type="text" placeholder="请输入你的邮箱">
+        <input id="findSubmit" type="button" style="background-color: #099be7;" value="确定" >
+
+<div style="width: 100%;height: 100px;margin-top: 50px">
+    <p style="text-align:center;" id="status"></p>
+</div>
+</div>
+
+</div>
+<div id="footer">
+
+    <a>关于我们@qq1031734796 &nbsp &nbsp|&nbsp &nbsp</a>
+
+
+    <a>Copyright © 2016 霍震霖 保留所有权利 粤ICP备17006581号</a>
+</div>
+<div id="cloud"></div>
+
+
+<script src="../framework/js/jquery-2.1.1.js" type="text/javascript" charset="UTF-8"></script>
+<script src="../framework/js/index.js" type="text/javascript" charset="UTF-8"></script>
+<script src="../framework/js/selectuser.js" type="text/javascript" charset="UTF-8"></script>
+<script language='javascript' type='text/javascript'>
+
+    //失去焦点的时候调用
+    $('.login_name').blur(function (){
+        var s=$('.login_name').val();
+
+        if(s!=""){
+            changImg(s)
+        }
+    })
+
+</script>
+
+
+</body>
+</html>

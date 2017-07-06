@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default" role="navigation" style="background-color: #000">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1 class="h1">
+      <span class="glyphicon glyphicon-th"  style="color: white" ></span> 
+      <a href="#" style="color: white;text-decoration:none;">Console</a>
+      </h1>
+                </div>
+                <div class="col-md-2">
+                    <#if USER??>
+                    <h4 class="h4" style="margin-top: 25px;" >
+                    <span class="glyphicon glyphicon-user"  style="color: white"></span>
+                    <a  style="color:#b2dba1;text-decoration:none;" > ${USER.username}</a>
+                    <span  style="color: white">|</span>
+                    <a href="/admin/loginOut" style="color: white;text-decoration:none;cursor:pointer;" >注销</a>
+                    </h4>
+                    </#if> 
+                </div>
+            </div>
+        </div>
+    </nav>

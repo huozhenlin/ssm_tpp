@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="http://localhost:8080/framework/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="http://localhost:8080/framework/jquery-1.11.1/dist/jquery.min.js"></script>
+    <script src="http://localhost:8080/framework/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- 头部 -->
+    <#include "/__layout/header.html">
+
+        <!-- 中间内容块 -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <!-- 左边菜单栏 -->
+                        <#include "/__layout/aside.html">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form id="re_form" action="/admin/${user.id}/update" method="post" enctype="multipart/form-data">
+                                    <table width="400px" height="280px" cellpadding="0" cellspacing="0" border="1" >
+                                        <tr>
+                                            <td align="right">
+                                                <label>用户名：</label>
+                                            </td>
+                                            <td align="left">
+                                                <input type="text" id="txtUserName" name="username" value="${user.username}" style="width:160px; margin-left:10px;"/>
+                                            </td>
+                                            <td><span class="name_tip"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label>密 码：</label>
+                                            </td>
+                                            <td align="left">
+                                                <input type="text" id="password" name="password" value="${user.password}" style="width:160px; margin-left:10px;"/>
+                                            </td>
+                                            <td><span class="pass_tip"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="right">
+                                                <label>邮箱：</label>
+                                            </td>
+                                            <td align="left">
+                                                <input type="text" id="email" name="email" value="${user.email}"style="width:160px; margin-left:10px;"/>
+                                            </td>
+                                            <td><span id="email_tip"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td align="right">
+                                                <label>头像：</label>
+                                            </td>
+                                            <td align="left">
+                                                <input type="file" id="pic" name="file" value="${user.pic}"style="width:160px; margin-left:10px;"/>
+                                            </td>
+                                            <td><span id="pic_head"></span></td>
+                                        </tr>
+                                        <tr style="text-align: center"><td colspan="3"><input type="submit" value="提交"/></td></tr>
+
+
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 脚部 -->
+        <#include "/__layout/footer.html">
+
+
+</div>
+
+</body>
+</html>
