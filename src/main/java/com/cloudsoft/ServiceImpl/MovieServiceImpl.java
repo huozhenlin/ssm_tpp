@@ -2,6 +2,7 @@ package com.cloudsoft.ServiceImpl;
 
 import java.util.List;
 
+import com.cloudsoft.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,8 +55,19 @@ public class MovieServiceImpl implements MovieService {
 		
 		return movieMapper.selectByName(name);
 	}
-	
-	
-	
+
+	/**
+	 * 根据id修改电影信息
+	 * 需要传入movie实体
+	 */
+	public int updateMovieById(Movie movie) {
+		return movieMapper.updateByPrimaryKey(movie);
+	}
+
+	@Override
+	public int update(Movie movie) {
+		return movieMapper.updateByPrimaryKey(movie);
+	}
+
 
 }

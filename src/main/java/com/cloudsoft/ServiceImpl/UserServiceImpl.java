@@ -69,6 +69,11 @@ public class UserServiceImpl implements UserService {
 		return userMapper.selectByPrimaryKey(id);
 	}
 
+	/**
+	 * 根据id修改用户信息
+	 * @param user
+	 * @return
+	 */
 	public int updateUserById(User user) {
 		return userMapper.updateUserById(user);
 	}

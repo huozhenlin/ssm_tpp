@@ -15,5 +15,9 @@ public interface MovieService {
 	public Movie findById(Integer id);
 	
 	public Movie findByName(String name);
+
+	public int updateMovieById(Movie movie);
+
+	public int update(Movie movie);
 	
 }

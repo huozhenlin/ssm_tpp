@@ -1,6 +1,7 @@
 package com.cloudsoft.controller;
 
 import java.io.File;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -72,17 +73,19 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(HttpSession httpSession,
+			@RequestParam("code")String code,
 			@RequestParam("username") String username,
 			@RequestParam("password") String password) {
-		System.out.println("admin获取到post的用户名是"+username);
-		System.out.println("admin获取到post的密码是"+password);
+		System.out.println("获取到post的用户名是"+username);
+		System.out.println("获取到post的密码是"+password);
+		System.out.println("获取到code是"+code);
 
-		if (username == null || password == null) {
+		if (username == null || password == null || code==null) {
 			return new ModelAndView("redirect:/admin/login");
 		}
 
 		User user = userServiceImpl.findByNameAndPwd(username, password);
-		if (user != null) {
+		if (user != null && code.equalsIgnoreCase(httpSession.getAttribute("code").toString())) {
 			System.out.println("获取到了用户");
 			httpSession.setAttribute("loginUser", user);
 			return new ModelAndView("redirect:/admin/");
@@ -223,8 +226,12 @@ public class AdminController {
 		return mv;
 	}
 
-
-
+	/**
+	 * 跳转用户更新页面
+	 * @param id id
+	 * @param session session
+	 * @return 视图
+	 */
 	@RequestMapping("/user/{id}/update")
 	public ModelAndView toUpdate(@PathVariable("id") int id,
 								 HttpSession session) {
@@ -235,6 +242,7 @@ public class AdminController {
 		}
 		return mv;
 	}
+	//在页面更新用户信息
 	@RequestMapping("/{id}/update")
 	public ModelAndView update(@PathVariable("id") int id ,User user){
 		User u = new User();
@@ -263,6 +271,7 @@ public class AdminController {
 		}
 		return mv;
 	}
+
 	
 	/**
 	 * 根据id删除电影信息
@@ -303,11 +312,34 @@ public class AdminController {
 		}
 		
 	}
-	
+
+	//跳转到电影更新页面
+	@RequestMapping("/movie/{id}/update")
+	public ModelAndView toMovieUpdate(@PathVariable("id") int id,
+								 HttpSession session) {
+		ModelAndView mv = new ModelAndView("/manager/updateMovie");
+		Movie movie = movieServiceImpl.findById(id);
+		if(movie != null){
+			session.setAttribute("movie",movie);
+		}
+		return mv;
+	}
+
+	//在页面更新电影信息
+	@RequestMapping(value = "/mupdate")
+	public ModelAndView mupdate(Movie movie) {
+		movieServiceImpl.update(movie);
+		return new ModelAndView("redirect:/admin/movie");
+	}
+
+
+
+
+
 	/**
-	 * 后台电影排期列表
-	 * @return
-	 */
+         * 后台电影排期列表
+         * @return
+         */
 	@RequestMapping("/schedule")
 	public ModelAndView getAllSchedules() {
 		ModelAndView mv = new ModelAndView("/manager/schedule");

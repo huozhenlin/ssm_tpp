@@ -50,7 +50,9 @@
                                 <td>${(movie.releasetime?string("yyyy-MM-dd HH:mm:ss"))!}</td>
                                 <td>${movie.price!}</td>
                                 <!-- <td>修改/删除</td> -->
-                                <td><a href="/admin/movie/${movie.id!}/delete" style="text-decoration:none;cursor:pointer;">删除</a></td>
+                                <td><a href="/admin/movie/${movie.id!}/delete" style="text-decoration:none;cursor:pointer;">删除</a> |
+                                    <a href="/admin/movie/${movie.id!}/update" style="text-decoration:none;cursor:pointer;">修改</a>
+                                </td>
                             </tr>
                             </#list>
                             <tr>

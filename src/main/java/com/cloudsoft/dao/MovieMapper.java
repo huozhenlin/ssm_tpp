@@ -39,7 +39,6 @@ public interface MovieMapper {
     @ResultMap("BaseResultMap")
     Movie selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Movie record);
 
     @Update({
         "update movie",
