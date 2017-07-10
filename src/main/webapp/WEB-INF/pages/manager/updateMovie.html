@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head xmlns:HH="http://java.sun.com/jsf/composite" xmlns:HH="http://java.sun.com/jsf/core">
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="http://localhost:8080/framework/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <script src="http://localhost:8080/framework/jquery-1.11.1/dist/jquery.min.js"></script>
+    <script src="http://localhost:8080/framework/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+</head>
+<div class="container">
+    <!-- 头部 -->
+    <#include "/__layout/header.html">
+
+        <!-- 中间内容块 -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <!-- 左边菜单栏 -->
+                        <#include "/__layout/aside.html">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal" role="form" method="post" action="/admin/mupdate">
+                                    <div class="form-group" style="text-align: center;display: none;"><input type="text" name="id" value="${movie.id!}" ></div>
+
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">电影名</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="name" value="${movie.name!}" placeholder="请输入电影名...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">封面</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="photourl" value="${movie.photourl!}" placeholder="请输入封面url地址...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">导演</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="director" value="${movie.director!}" placeholder="请输入导演名...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">主演</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="star" value="${movie.star!}" placeholder="请输入主演名...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">电影简介</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="summary" value="${movie.summary!}" placeholder="请输入电影简介...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">上映时间</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" id="inputName" type="date" name="releasetime" placeholder="请输入时间" value="${(movie.releasetime?string("yyyy-MM-dd"))!}" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">票价(元)</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputName" name="price" value="${movie.price}"  placeholder="请输入电影票价...">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-default btn-block btn-lg" style="margin-top: 10px" >保存</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 脚部 -->
+        <#include "/__layout/footer.html">
+
+
+</div>
+
+</body>
+</html>
