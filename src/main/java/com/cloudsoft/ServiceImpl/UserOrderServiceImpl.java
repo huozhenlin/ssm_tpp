@@ -2,13 +2,11 @@ package com.cloudsoft.ServiceImpl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.cloudsoft.dao.UserOrderMapper;
 import com.cloudsoft.entity.UserOrder;
 import com.cloudsoft.service.UserOrderService;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserOrderServiceImpl implements UserOrderService {
@@ -24,8 +22,6 @@ public class UserOrderServiceImpl implements UserOrderService {
 		
 		return orderMapper.insert(order);
 	}
-	
-	
 
 	/**
 	 * 根据id删除订单

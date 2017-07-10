@@ -42,7 +42,11 @@
                                 <td>${(schedule.starttime?string("yyyy-MM-dd HH:mm:ss"))!}</td>
                                 <td>${(schedule.endtime?string("yyyy-MM-dd HH:mm:ss"))!}</td>
                                 <!-- <td>修改/删除</td> -->
-                                <td><a href="/admin/schedule/${schedule.id!}/delete" style="text-decoration:none;cursor:pointer;">删除</a></td>
+                                <td>
+                                    <a href="/admin/schedule/${schedule.id!}/delete" style="text-decoration:none;cursor:pointer;">删除</a>
+                                    |
+                                    <a href="/admin/user/${loginUser.id!}/movie/${schedule.movieid!}/schedule/${schedule.id!}/buy" style="text-decoration:none;cursor:pointer;">订票</a>
+                                </td>
                             </tr>
                             </#list>
                         </table>

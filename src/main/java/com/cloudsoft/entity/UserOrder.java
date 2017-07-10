@@ -1,6 +1,6 @@
 package com.cloudsoft.entity;
 
-public class UserOrder {
+public class UserOrder{
     private Integer id;
 
     private Integer userid;

@@ -4,12 +4,14 @@ import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.cloudsoft.dao.IUserDao;
+import com.cloudsoft.dto.MsgResult;
 import com.cloudsoft.service.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -412,7 +414,7 @@ public class AdminController {
 		
 		List<UserOrder> orders = orderServiceImpl.findAllOrders();
 		if(!orders.isEmpty()){
-			
+
 			List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
 			for (UserOrder order : orders) {
 				//获取跟该订单相关的对象实例
@@ -430,13 +432,51 @@ public class AdminController {
 				orderDetail.setPrice(order.getPrice());
 				orderDetails.add(orderDetail);
 			}
-			
+
 			mv.addObject("orderList", orderDetails);
 		}
 		
 		return mv;
 	}
-	
+
+
+	/**
+	 * 购买电影票
+	 * 接口:/api/user/{uid}/movie/{mid}/schedule/{sid}/buy
+	 * @param uid
+	 * @param mid
+	 * @return
+	 */
+	@RequestMapping("/user/{uid}/movie/{mid}/schedule/{sid}/buy")
+	public ModelAndView buyTicket(@PathVariable("uid")int uid,
+							   @PathVariable("mid")int mid,
+							   @PathVariable("sid")int sid){
+
+		User user = userServiceImpl.findById(uid);
+		Movie movie=movieServiceImpl.findById(mid);
+		Schedule schedule=scheduleServiceImpl.findById(sid);
+
+		//随机生成座位信息
+		Random rd = new Random();
+		int row = rd.nextInt(20)+1;
+		int col = rd.nextInt(20)+1;
+		String seat = row+" pai "+col+" zuo ";
+
+		//生成订单信息
+		UserOrder order = new UserOrder();
+		order.setUserid(uid);
+		order.setMovieid(mid);
+		order.setScheduleid(sid);
+		order.setSeat(seat);
+		order.setPrice(movie.getPrice());
+
+		int result = orderServiceImpl.save(order);
+		if(result > 0){
+			return new ModelAndView("manager/tips");
+		}else{
+			return null;
+		}
+	}
 	
 	/**
 	 * 根据id删除订单信息

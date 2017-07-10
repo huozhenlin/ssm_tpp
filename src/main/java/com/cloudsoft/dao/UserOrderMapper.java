@@ -27,7 +27,7 @@ public interface UserOrderMapper {
         "#{userorder.seat,jdbcType=VARCHAR}, #{userorder.price,jdbcType=DECIMAL})"
     })
     @Options(useGeneratedKeys = true, keyProperty = "userorder.id")
-    int insert(@Param("userorder")UserOrder record);
+    int insert(@Param("userorder") UserOrder record);
 
     int insertSelective(UserOrder record);
 

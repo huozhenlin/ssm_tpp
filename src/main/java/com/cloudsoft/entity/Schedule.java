@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Schedule {
+public class Schedule extends Movie{
     private Integer id;
     
     private Integer movieid;

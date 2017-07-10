@@ -9,4 +9,5 @@
     <result column="seat" property="seat" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DECIMAL" />
   </resultMap>
+
 </mapper>
