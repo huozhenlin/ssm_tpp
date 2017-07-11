@@ -122,6 +122,10 @@ public class UserServicesImpl implements UserServices {
 
     }
 
+    @Override
+    public User checkRole(String username) {
+        return Mapper.checkRole(username);
+    }
 
 
 }

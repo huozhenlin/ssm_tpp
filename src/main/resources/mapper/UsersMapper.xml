@@ -50,4 +50,9 @@
     <update id="alter" parameterType="string">
         UPDATE user set password=#{password} WHERE username=#{username}
     </update>
+
+    <!--检查权限-->
+    <select id="checkRole" parameterType="string" resultType="User">
+        SELECT * from user where username=#{username}
+    </select>
 </mapper>

@@ -41,6 +41,7 @@ public class User {
     private String code;
     private String email;
     private String pic;
+    private int role;
 
     public String getPic() {
         return pic;
@@ -100,5 +101,13 @@ public class User {
 
     public User() {
         super();
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }

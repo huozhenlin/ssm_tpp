@@ -43,4 +43,7 @@ public interface IUserDao {
     //修改用户密码
     public int alter(@Param("username") String username, @Param("password") String password);
 
+    //检查权限
+    public User checkRole(String username);
+
 }

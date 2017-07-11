@@ -43,7 +43,7 @@
                                 <td>${(schedule.endtime?string("yyyy-MM-dd HH:mm:ss"))!}</td>
                                 <!-- <td>修改/删除</td> -->
                                 <td>
-                                    <a href="/admin/schedule/${schedule.id!}/delete" style="text-decoration:none;cursor:pointer;">删除</a>
+                                    <a class="schedule_del" href="/admin/schedule/${schedule.id!}/delete" style="text-decoration:none;cursor:pointer;">删除</a>
                                     |
                                     <a href="/admin/user/${loginUser.id!}/movie/${schedule.movieid!}/schedule/${schedule.id!}/buy" style="text-decoration:none;cursor:pointer;">订票</a>
                                 </td>
@@ -65,6 +65,30 @@
 
 
 </div>
+ <script>
+     $.ajax({
+         url:'http://localhost:8080/api/role/check',
+         type:'get',
+         dataType: "json",
+         timeout: 5000,
+         success: function (msg) {
+             alert(msg);
+             if(msg ==1){
+                 $('.role_0').css("display","none");
+                 $('.role_1').css("display","block");
+             }
 
+             if(msg ==0){
+                 $('.role_0').css("display","block");
+                 $('.role_1').css("display","none");
+                 $('.schedule_del').css("display","none")
+             }
+         },
+         error: function () {
+             alert("error")
+         }
+     });
+
+ </script>
 </body>
 </html>

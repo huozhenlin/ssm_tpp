@@ -15,6 +15,7 @@ import com.cloudsoft.entity.Movie;
 import com.cloudsoft.entity.Schedule;
 import com.cloudsoft.entity.User;
 import com.cloudsoft.entity.UserOrder;
+import sun.nio.cs.US_ASCII;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -329,6 +330,18 @@ public class APIController {
 			message="status:fail";
 		}
 		return message;
+	}
+
+	//检查权限
+	@RequestMapping("/role/check")
+	@ResponseBody
+	public int checkRole(HttpSession session){
+		User user=new User();
+		user= (User) session.getAttribute("loginUser");
+		String username=user.getUsername();
+		user= userService.checkRole(username);
+		System.out.println("执行检查权限操作"+user.getRole());
+		return user.getRole();
 	}
 	
 	

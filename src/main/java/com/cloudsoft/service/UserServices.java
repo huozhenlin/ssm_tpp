@@ -1,5 +1,7 @@
 package com.cloudsoft.service;
 
+import com.cloudsoft.entity.User;
+
 /**
  * Created by hzl on 2017/3/29.
  */
@@ -22,4 +24,6 @@ public interface UserServices {
     public boolean checkMail(String email);//检测邮箱是否被占用
 
     public int alter(String username,String password);
+
+    public User checkRole(String username);
 }

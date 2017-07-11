@@ -82,6 +82,29 @@
 
 
 </div>
+<script>
+    $.ajax({
+        url:'http://localhost:8080/api/role/check',
+        type:'get',
+        dataType: "json",
+        timeout: 5000,
+        success: function (msg) {
+            alert(msg);
+            if(msg ==1){
+                $('.role_0').css("display","none");
+                $('.role_1').css("display","block");
+            }
 
+            if(msg ==0){
+                $('.role_0').css("display","block");
+                $('.role_1').css("display","none");
+            }
+        },
+        error: function () {
+            alert("error")
+        }
+    });
+
+</script>
 </body>
 </html>
